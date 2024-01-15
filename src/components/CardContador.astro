@@ -1,0 +1,18 @@
+---
+let piezas_count = 0;
+
+async function fetchData() {
+	const response = await fetch(
+		"http://192.168.100.254/api/produccion/piezas/obtener_piezas_actuales_conteo/",
+	);
+	const data = await response.json();
+	piezas_count = data.piezas_count;
+}
+
+setInterval(fetchData, 5000);
+---
+
+<div class="border-2 border-gray-300 p-4 rounded-md">
+	<h2 class="text-xl font-bold">Piezas Actuales</h2>
+	<p class="text-2xl font-semibold">{piezas_count}</p>
+</div>
