@@ -1,5 +1,23 @@
 ---
+import BarChartPlanMaquinas from "../components/BarChartPlanMaquinas";
 import CardContador from "../components/CardPiezasContador.jsx";
+import TablePiezasActuales from "../components/TablePiezasActuales.jsx";
 ---
 
-<CardContador functionUrl="contador_piezas_aprobadas" client:load />
+<CardContador
+    functionUrl="contador_piezas_aprobadas"
+    title="Piezas actuales"
+    client:load
+/>
+<CardContador
+    functionUrl="piezas_actuales_retrasadas_conteo"
+    title="Piezas retrasadas"
+    client:load
+/>
+<CardContador
+    functionUrl="piezas_actuales_prioritarias_conteo"
+    title="Piezas prioritarias"
+    client:load
+/>
+<TablePiezasActuales functionUrl="obtener_piezas_actuales" />
+<BarChartPlanMaquinas functionUrl="obtener_estadisticas_maquinado_hoy" />

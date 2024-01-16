@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../settings/config.js';
+import 'daisyui/dist/full.css';
 
-function CardContador({ functionUrl, title }) {
-	const [piezasCount, setPiezasCount] = useState(0);
+function TablaPiezas({ functionUrl }) {
+	const [piezas, setPiezas] = useState([]);
 	const [errorMessage, setErrorMessage] = useState('');
 
 	useEffect(() => {
@@ -12,7 +13,7 @@ function CardContador({ functionUrl, title }) {
 					`${API_URL}/api/produccion/piezas/${functionUrl}/`,
 				);
 				const data = await response.json();
-				setPiezasCount(data.piezas);
+				setPiezas(data);
 				setErrorMessage('');
 			} catch (error) {
 				setErrorMessage(error.message);
@@ -27,10 +28,30 @@ function CardContador({ functionUrl, title }) {
 
 	return (
 		<div className="m-8 card shadow-xl p-4">
-			<p className="text-2xl font-semibold">{errorMessage || piezasCount}</p>
-			<p className="text-xl font-light">{title}</p>
+			{errorMessage ? (
+				<p>{errorMessage}</p>
+			) : (
+				<table className="table w-full">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Consecutivo</th>
+							<th>Estatus</th>
+						</tr>
+					</thead>
+					<tbody>
+						{piezas.map((pieza) => (
+							<tr key={pieza.id}>
+								<td>{pieza.id}</td>
+								<td>{pieza.consecutivo}</td>
+								<td>{pieza.estatus}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	);
 }
 
-export default CardContador;
+export default TablaPiezas;
