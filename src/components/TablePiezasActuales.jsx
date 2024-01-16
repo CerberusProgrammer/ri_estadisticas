@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../settings/config.js';
-import 'daisyui/dist/full.css';
 
 function TablaPiezas({ functionUrl }) {
 	const [piezas, setPiezas] = useState([]);
@@ -27,7 +26,7 @@ function TablaPiezas({ functionUrl }) {
 	}, [functionUrl]);
 
 	return (
-		<div className="m-8 card shadow-xl p-4">
+		<div className="m-4 card shadow-xl p-4">
 			{errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (

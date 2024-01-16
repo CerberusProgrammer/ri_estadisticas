@@ -1,0 +1,26 @@
+---
+import BarChartPlanMaquinas from "../components/BarChartPlanMaquinas";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="w-full">
+    <BarChartPlanMaquinas
+      functionUrl="/api/produccion/piezas/obtener_estadisticas_maquinado_hoy/"
+      client:load
+    />
+  </div>
+
+  <div class="w-full">
+    <BarChartPlanMaquinas
+      functionUrl="/api/produccion/piezas/obtener_estadisticas_soldadura_hoy/"
+      client:load
+    />
+  </div>
+
+  <div class="w-full">
+    <BarChartPlanMaquinas
+      functionUrl="/api/produccion/piezas/obtener_estadisticas_maquinado_hoy/"
+      client:load
+    />
+  </div>
+</div>
