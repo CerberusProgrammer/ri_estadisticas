@@ -50,20 +50,20 @@ function CircularProgressComponent({ functionUrl, title }) {
                     fill="rgba(0, 0, 0, 0.6)"
                     dy=".3em"
                 >
-                    {`${value}%`}
+                    {`${value.toFixed(2)}%`}
                 </text>
             </svg>
         );
     };
 
     return (
-        <div className="m-4 card shadow-xl p-4">
+        <div className="bg-orange-50 card shadow-md p-4 flex justify-center items-center">
             {errorMessage ? (
                 <p>{errorMessage}</p>
             ) : (
                 <div className="flex flex-col items-center">
                     <h2 className="text-xl font-bold">{title}</h2>
-                    <div className="w-full md:w-1/2 lg:w-1/3">
+                    <div className="w-full  flex justify-center">
                         <CircularProgress
                             value={datos.progreso}
                         />

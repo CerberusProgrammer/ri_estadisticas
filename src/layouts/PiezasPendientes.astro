@@ -2,8 +2,34 @@
 import CircularProgress from "../components/CircularProgress.jsx";
 ---
 
-<CircularProgress
-    title="Progreso de piezas aprobadas"
-    functionUrl="/api/produccion/piezas/progreso_de_piezas_aprobadas/"
-    client:load
-/>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <CircularProgress
+        title="Progreso de piezas aprobadas"
+        functionUrl="/api/produccion/piezas/progreso_de_piezas_aprobadas/"
+        client:load
+    />
+
+    <CircularProgress
+        title="Progreso de piezas con material"
+        functionUrl="/api/produccion/piezas/progreso_de_piezas_pendientes_de_material/"
+        client:load
+    />
+
+    <CircularProgress
+        title="Progreso de piezas con nesteo"
+        functionUrl="/api/produccion/piezas/progreso_de_piezas_pendientes_de_nesteo/"
+        client:load
+    />
+
+    <CircularProgress
+        title="Progreso de piezas con procesos"
+        functionUrl="/api/produccion/piezas/progreso_de_piezas_pendientes_de_procesos/"
+        client:load
+    />
+
+    <CircularProgress
+        title="Progreso de piezas con operadores"
+        functionUrl="/api/produccion/piezas/progreso_de_piezas_pendientes_de_operadores/"
+        client:load
+    />
+</div>

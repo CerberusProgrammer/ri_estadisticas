@@ -26,24 +26,34 @@ function GraficoBarras({ functionUrl }) {
     }, [functionUrl]);
 
     return (
-        <div className="m-4 card shadow-xl p-4">
+        <div className="m-4 bg-orange-50 card shadow-md p-4">
             {errorMessage ? (
                 <p>{errorMessage}</p>
             ) : (
                 Object.entries(datos).map(([categoria, { realizadas, planeado }]) => (
                     <div key={categoria}>
                         <h2 className="text-xl font-bold">{categoria}</h2>
-                        <div className="w-full h-4 bg-yellow-200 rounded-full">
+                        <div className="w-full h-8 bg-yellow-100 rounded-full relative">
                             <div
                                 style={{ width: `${realizadas > 0 ? (realizadas / (realizadas + planeado)) * 100 : 0}%` }}
                                 className="h-full bg-yellow-600 rounded-full"
                             ></div>
+                            {realizadas > 0 && (
+                                <span className="absolute inset-0 flex items-center justify-center text-sm">
+                                    {`${realizadas} ${realizadas > 1 ? 'piezas' : 'pieza'}`}
+                                </span>
+                            )}
                         </div>
-                        <div className="w-full h-4 bg-orange-200 rounded-full mt-2">
+                        <div className="w-full h-8 bg-orange-100 rounded-full mt-2 relative">
                             <div
                                 style={{ width: `${planeado > 0 ? (planeado / (realizadas + planeado)) * 100 : 0}%` }}
-                                className="h-full bg-orange-600 rounded-full"
+                                className="h-full bg-orange-400 rounded-full"
                             ></div>
+                            {planeado > 0 && (
+                                <span className="absolute inset-0 flex items-center justify-center text-sm">
+                                    {`${planeado} ${planeado > 1 ? 'piezas' : 'pieza'}`}
+                                </span>
+                            )}
                         </div>
                     </div>
                 ))

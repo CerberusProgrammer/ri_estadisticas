@@ -26,7 +26,7 @@ function TablaPiezas({ functionUrl }) {
 	}, [functionUrl]);
 
 	return (
-		<div className="m-4 card shadow-xl p-4">
+		<div className="bg-orange-50 card shadow-md p-4">
 			{errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (

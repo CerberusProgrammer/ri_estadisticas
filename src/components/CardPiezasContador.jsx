@@ -26,7 +26,7 @@ function CardContador({ functionUrl, title }) {
 	}, [functionUrl]);
 
 	return (
-		<div className="btn btn-ghost card shadow-md p-4">
+		<div className="btn btn-ghost card bg-orange-50 shadow-md p-4">
 			<p className="text-2xl font-semibold">{errorMessage || piezasCount}</p>
 			<p className=" font-light">{title}</p>
 		</div>
