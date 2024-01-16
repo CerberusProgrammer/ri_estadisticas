@@ -25,13 +25,22 @@ function GraficoBarras({ functionUrl }) {
         return () => clearInterval(intervalId);
     }, [functionUrl]);
 
+    const handleClick = () => {
+        // Aquí puedes manejar el evento de clic
+        console.log('Se hizo clic en la máquina');
+    };
+
     return (
         <div className="m-4 bg-orange-50 card shadow-md p-4">
             {errorMessage ? (
                 <p>{errorMessage}</p>
             ) : (
                 Object.entries(datos).map(([categoria, { realizadas, planeado }]) => (
-                    <div key={categoria}>
+                    <button
+                        key={categoria}
+                        onClick={handleClick}
+                        className="w-full h-40 bg-white rounded-lg shadow-md p-4 mb-4 hover:bg-gray-100 active:scale-95 transform transition duration-150 ease-in-out"
+                    >
                         <h2 className="text-xl font-bold">{categoria}</h2>
                         <div className="w-full h-8 bg-yellow-100 rounded-full relative">
                             <div
@@ -55,7 +64,7 @@ function GraficoBarras({ functionUrl }) {
                                 </span>
                             )}
                         </div>
-                    </div>
+                    </button>
                 ))
             )}
         </div>
