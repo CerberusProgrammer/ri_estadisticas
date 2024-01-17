@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../settings/config.js';
 
-function GraficoBarras({ functionUrl }) {
+function GraficoBarras({ functionUrl, cardTitle }) {
     const [datos, setDatos] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -32,6 +32,7 @@ function GraficoBarras({ functionUrl }) {
 
     return (
         <div className="m-4 bg-orange-50 card shadow-md p-4">
+            <h1 className="text-2xl font-bold mb-4">{cardTitle}</h1>
             {errorMessage ? (
                 <p>{errorMessage}</p>
             ) : (

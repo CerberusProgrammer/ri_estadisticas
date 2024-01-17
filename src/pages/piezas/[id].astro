@@ -1,0 +1,21 @@
+---
+import Pieza from "../../components/Pieza.jsx";
+import Nav from "../../components/Nav.astro";
+
+const { id } = Astro.params;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pieza {id}</title>
+    </head>
+    <body>
+        <Nav />
+        <div class="pl-8 pr-8 pt-2">
+            <Pieza id={id} client:load />
+        </div>
+    </body>
+</html>

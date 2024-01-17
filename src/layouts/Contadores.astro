@@ -5,6 +5,7 @@ import CardContador from "../components/CardPiezasContador.jsx";
 <div class="flex flex-col md:flex-row justify-around p-4">
     <div class="w-full md:w-1/3 p-2">
         <CardContador
+            pageUrl="/piezas-actuales"
             functionUrl="contador_piezas_aprobadas"
             title="Piezas actuales"
             client:load
@@ -12,6 +13,7 @@ import CardContador from "../components/CardPiezasContador.jsx";
     </div>
     <div class="w-full md:w-1/3 p-2">
         <CardContador
+            pageUrl="/piezas-retrasadas"
             functionUrl="piezas_actuales_retrasadas_conteo"
             title="Piezas retrasadas"
             client:load
@@ -19,6 +21,7 @@ import CardContador from "../components/CardPiezasContador.jsx";
     </div>
     <div class="w-full md:w-1/3 p-2">
         <CardContador
+            pageUrl="/piezas-prioritarias"
             functionUrl="piezas_actuales_prioritarias_conteo"
             title="Piezas prioritarias"
             client:load
