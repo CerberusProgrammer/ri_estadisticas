@@ -34,9 +34,9 @@ function CardContador({ functionUrl, title, pageUrl }) {
 	};
 
 	return (
-		<div className="btn btn-ghost card bg-orange-50 shadow-md h-14 p-4">
+		<div className="btn btn-ghost card bg-white shadow-md h-14 p-12">
 			{isLoading ? (
-				<span className="loading loading-spinner text-secondary"></span>
+				<span className="loading loading-spinner text-secondary p-4"></span>
 			) : errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (
@@ -44,8 +44,8 @@ function CardContador({ functionUrl, title, pageUrl }) {
 					onClick={handleClick}
 					className="w-full h-full flex flex-col justify-center items-center"
 				>
-					<p className="text-2xl font-semibold">{piezasCount}</p>
-					<p className="font-normal">{title}</p>
+					<p className="text-4xl text-secondary font-semibold">{piezasCount}</p>
+					<p className="font-bold text-gray-500 pt-2">{title}</p>
 				</button>
 			)}
 		</div>
