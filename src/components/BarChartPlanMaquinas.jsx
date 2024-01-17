@@ -49,7 +49,7 @@ function GraficoBarras({ functionUrl, cardTitle }) {
                                 className="h-full bg-yellow-600 rounded-full"
                             ></div>
                             {realizadas > 0 && (
-                                <span className="absolute inset-0 flex items-center justify-center text-sm">
+                                <span className="absolute inset-0 flex items-center justify-center text-md">
                                     {`${realizadas} ${realizadas > 1 ? 'piezas' : 'pieza'}`}
                                 </span>
                             )}
@@ -60,7 +60,7 @@ function GraficoBarras({ functionUrl, cardTitle }) {
                                 className="h-full bg-orange-400 rounded-full"
                             ></div>
                             {planeado > 0 && (
-                                <span className="absolute inset-0 flex items-center justify-center text-sm">
+                                <span className="absolute inset-0 flex items-center justify-center text-md">
                                     {`${planeado} ${planeado > 1 ? 'piezas' : 'pieza'}`}
                                 </span>
                             )}

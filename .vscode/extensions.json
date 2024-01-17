@@ -1,4 +1,21 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "aaron-bond.better-comments",
+    "usernamehw.errorlens",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "yzhang.markdown-all-in-one",
+    "PKief.material-icon-theme",
+    "PKief.material-product-icons",
+    "unifiedjs.vscode-mdx",
+    "christian-kohler.path-intellisense",
+    "zhang-renyang.vscode-react",
+    "burkeholland.simple-react-snippets",
+    "bradlc.vscode-tailwindcss",
+    "austenc.tailwind-docs",
+    "Vue.volar",
+    "svelte.svelte-vscode",
+    "enkia.tokyo-night",
+  ],
   "unwantedRecommendations": []
 }
