@@ -37,13 +37,13 @@ function Search({ }) {
         <div className="form-control relative">
             <input
                 type="text"
-                placeholder="Search"
-                className="input input-bordered w-auto md:w-56"
+                placeholder="Buscar consecutivo"
+                className="input input-bordered w-auto md:w-56 "
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
             {results.length > 0 && (
-                <div className="absolute bg-white shadow-md rounded-md p-2 mt-8 z-10"> {/* Agrega margen superior */}
+                <div className="absolute bg-white shadow-md rounded-md p-2 mt-10 z-10"> {/* Agrega margen superior */}
                     {results.map(({ id, consecutivo }) => (
                         <p
                             key={id}

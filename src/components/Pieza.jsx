@@ -11,66 +11,70 @@ function Pieza({ id }) {
     }, [id]);
 
     if (!data) {
-        return <div>Loading...</div>;
+        return <div>Cargando...</div>;
     }
+
+    const steps = ["diseño", "material", "nesteos", "procesos", "produccion", "operador", "realizado", "calidad", "completado"];
 
     return (
         <div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.consecutivo}</p>
+                <p className="font-medium text-xl">{data.consecutivo || "Sin consecutivo"}</p>
                 <p>Consecutivo</p>
             </div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.estatus}</p>
+                <p className="font-medium text-xl">{data.estatus || "Sin estatus"}</p>
                 <div className="md:block hidden">
-                    <ul className="steps w-full">
-                        <li className="step step-secondary"><p className="text-xl">Diseño</p></li>
-                        <li className="step"><p className="text-xl">Material</p></li>
-                        <li className="step"><p className="text-xl">Nesteo</p></li>
-                        <li className="step"><p className="text-xl">Procesos</p></li>
-                        <li className="step"><p className="text-xl">Produccion</p></li>
-                        <li className="step"><p className="text-xl">Operador</p></li>
-                        <li className="step"><p className="text-xl">Realizado</p></li>
-                        <li className="step"><p className="text-xl">Calidad</p></li>
-                        <li className="step"><p className="text-xl">Completado</p></li>
+                    <ul className="steps">
+                        {steps.map(step => (
+                            <li className={`step ${data.estados[step] === "realizado" ? "step-secondary" : ""}`}>
+                                <p className="text-xl">{step.charAt(0).toUpperCase() + step.slice(1)}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
                 <div className="md:hidden block">
                     <ul className="steps steps-vertical">
-                        <li className="step step-secondary"><p className="text-xl">Diseño</p></li>
-                        <li className="step"><p className="text-xl">Material</p></li>
-                        <li className="step"><p className="text-xl">Nesteo</p></li>
-                        <li className="step"><p className="text-xl">Procesos</p></li>
-                        <li className="step"><p className="text-xl">Produccion</p></li>
-                        <li className="step"><p className="text-xl">Operador</p></li>
-                        <li className="step"><p className="text-xl">Realizado</p></li>
-                        <li className="step"><p className="text-xl">Calidad</p></li>
-                        <li className="step"><p className="text-xl">Completado</p></li>
+                        {steps.map(step => (
+                            <li className={`step ${data.estados[step] === "realizado" ? "step-secondary" : ""}`}>
+                                <p className="text-xl">{step.charAt(0).toUpperCase() + step.slice(1)}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <p>Estatus</p>
             </div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.material.nombre}</p>
-                <p className="font-medium text-sm">{data.material.espesor}</p>
-                <p className="font-medium text-sm">{data.material.proveedor}</p>
+                <p className="font-medium text-xl">{data.material.nombre || "Sin material"}</p>
+                <p className="font-medium text-sm">{data.material.espesor || "Sin espesor"}</p>
+                <p className="font-medium text-sm">{data.material.proveedor || "Sin proveedor"}</p>
                 <p>Material</p>
             </div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.piezasTotales}</p>
+                <ul>
+                    {data.placas.length > 0 ? data.placas.map(placa => (
+                        <li>
+                            <p className="font-medium text-xl">Nesteo {placa['id']}</p>
+                        </li>
+                    )) : <p className="font-medium text-xl">Sin nesteos</p>}
+                </ul>
+                <p>Nesteos</p>
+            </div>
+            <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
+                <p className="font-medium text-xl">{data.piezasTotales || "Sin piezas totales"}</p>
                 <p>Piezas totales</p>
             </div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.ordenCompra}</p>
-                <p>Orden de produccion</p>
+                <p className="font-medium text-xl">{data.ordenCompra || "Sin orden de producción"}</p>
+                <p>Orden de producción</p>
             </div>
             <div className="card bg-orange-50 w-full p-4 mb-4 shadow-md">
-                <p className="font-medium text-xl">{data.fechaCreado}</p>
+                <p className="font-medium text-xl">{data.fechaCreado || "Sin fecha de creación"}</p>
                 <p>Fecha de creación</p>
             </div>
-            <a href={data.archivo_pdf} className="card btn bg-orange-100 w-full p-4 mb-4 shadow-md">
-                <p>Archivo PDF</p>
+            <a href={API_URL + data.archivo_pdf || "#"} className="card btn bg-orange-100 w-full p-4 mb-4 shadow-md">
+                <p>{data.archivo_pdf ? "Archivo PDF" : "Sin archivo PDF"}</p>
             </a>
         </div>
     );
