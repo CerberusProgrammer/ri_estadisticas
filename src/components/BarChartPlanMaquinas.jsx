@@ -31,7 +31,7 @@ function GraficoBarras({ functionUrl, cardTitle }) {
     };
 
     return (
-        <div className="m-4 bg-orange-50 card shadow-md p-4">
+        <div className="m-4 bg-white card text-center shadow-md p-4">
             <h1 className="text-2xl font-bold mb-4">{cardTitle}</h1>
             {errorMessage ? (
                 <p>{errorMessage}</p>

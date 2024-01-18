@@ -27,12 +27,22 @@ function CircularProgressComponent({ functionUrl, title }) {
 
     const CircularProgress = ({ value = 0 }) => {
         const radius = 50;
-        const strokeWidth = 15;
+        const strokeWidth = 20;
         const circumference = 2 * Math.PI * radius;
         const strokeDashoffset = circumference - (value / 100) * circumference;
 
         return (
             <svg height="120" width="120">
+                <circle
+                    stroke="orange"
+                    fill="orange"
+                    strokeWidth={10}
+                    strokeDasharray={circumference}
+                    style={{ strokeDashoffset, strokeLinecap: "round", opacity: 0.1 }}
+                    r={radius}
+                    cx="60"
+                    cy="60"
+                />
                 <circle
                     stroke="orange"
                     fill="transparent"
@@ -56,22 +66,26 @@ function CircularProgressComponent({ functionUrl, title }) {
         );
     };
 
+
     return (
-        <div className="bg-orange-50 card shadow-md p-4 flex justify-center items-center">
+        <div className="btn btn-ghost card bg-white shadow-md w-full h-56 flex justify-center items-center">
             {errorMessage ? (
                 <p>{errorMessage}</p>
-            ) : (
+            ) : datos ? (
                 <div className="flex flex-col items-center">
-                    <h2 className="text-xl font-bold">{title}</h2>
-                    <div className="w-full  flex justify-center">
+                    <h2 className="text-xl text-gray-500 font-bold">{title}</h2>
+                    <div className="w-full p-4 flex justify-center">
                         <CircularProgress
                             value={datos.progreso}
                         />
                     </div>
                 </div>
+            ) : (
+                <span class="loading loading-spinner text-secondary"></span>
             )}
         </div>
     );
+
 }
 
 export default CircularProgressComponent;

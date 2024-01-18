@@ -29,26 +29,24 @@ function CardContador({ functionUrl, title, pageUrl }) {
 	}, [functionUrl]);
 
 	const handleClick = () => {
-		// Aquí puedes manejar el evento de clic
 		window.location.href = pageUrl;
 	};
 
 	return (
-		<div className="btn btn-ghost card bg-white shadow-md h-14 p-12">
+		<button onClick={handleClick} className="btn btn-ghost card bg-white shadow-md w-full h-14 p-12">
 			{isLoading ? (
 				<span className="loading loading-spinner text-secondary p-4"></span>
 			) : errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (
-				<button
-					onClick={handleClick}
+				<p
 					className="w-full h-full flex flex-col justify-center items-center"
 				>
 					<p className="text-4xl text-secondary font-semibold">{piezasCount}</p>
 					<p className="font-bold text-gray-500 pt-2">{title}</p>
-				</button>
+				</p>
 			)}
-		</div>
+		</button>
 	);
 }
 
