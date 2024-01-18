@@ -4,6 +4,7 @@ import { API_URL } from '../settings/config.js';
 function CardContador({ functionUrl, title, pageUrl }) {
 	const [piezasCount, setPiezasCount] = useState(0);
 	const [errorMessage, setErrorMessage] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -14,8 +15,10 @@ function CardContador({ functionUrl, title, pageUrl }) {
 				const data = await response.json();
 				setPiezasCount(data.piezas);
 				setErrorMessage('');
+				setIsLoading(false);
 			} catch (error) {
 				setErrorMessage(error.message);
+				setIsLoading(false);
 			}
 		};
 
@@ -31,7 +34,9 @@ function CardContador({ functionUrl, title, pageUrl }) {
 
 	return (
 		<button onClick={handleClick} className="btn btn-ghost card bg-white shadow-md w-full h-14 p-12">
-			{errorMessage ? (
+			{isLoading ? (
+				<p>Cargando...</p>
+			) : errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (
 				<p

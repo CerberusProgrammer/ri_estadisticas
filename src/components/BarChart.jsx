@@ -6,10 +6,21 @@ function BarChart({ functionUrl }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`${API_URL}${functionUrl}`)
-            .then(response => response.json())
-            .then(data => setData(data))
-            .catch(error => setError(error));
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_URL}${functionUrl}`);
+                const data = await response.json();
+                setData(data);
+                setError('');
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchData();
+        const intervalId = setInterval(fetchData, 5000); // Llama a la API cada 5 segundos
+
+        return () => clearInterval(intervalId); // Limpia el intervalo cuando el componente se desmonta
     }, [functionUrl]);
 
     if (error) {

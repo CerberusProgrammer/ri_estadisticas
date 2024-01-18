@@ -26,7 +26,6 @@ function GraficoBarras({ functionUrl, cardTitle }) {
     }, [functionUrl]);
 
     const handleClick = () => {
-        // Aquí puedes manejar el evento de clic
         console.log('Se hizo clic en la máquina');
     };
 
