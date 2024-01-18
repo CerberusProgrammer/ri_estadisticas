@@ -18,9 +18,9 @@ function BarChart({ functionUrl }) {
         };
 
         fetchData();
-        const intervalId = setInterval(fetchData, 5000); // Llama a la API cada 5 segundos
+        const intervalId = setInterval(fetchData, 5000);
 
-        return () => clearInterval(intervalId); // Limpia el intervalo cuando el componente se desmonta
+        return () => clearInterval(intervalId);
     }, [functionUrl]);
 
     if (error) {
@@ -37,7 +37,7 @@ function BarChart({ functionUrl }) {
         <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 w-full h-full">
             {Object.entries(data).map(([name, { realizadas, planeado }]) => (
                 <div key={name} className="space-y-2">
-                    <div className="flex space-x-2 p-4 btn btn-ghost h-full tooltip" data-tip={`Realizadas: ${realizadas}, Planeado: ${planeado}`}>
+                    <a href="" className="flex space-x-2 p-4 btn btn-ghost h-full tooltip" data-tip={`Realizadas: ${realizadas}, Planeado: ${planeado}`}>
                         <div className="relative w-9 h-96 bg-orange-200 rounded">
                             <div
                                 className="absolute bottom-0 left-0 right-0 bg-orange-500 rounded"
@@ -50,7 +50,7 @@ function BarChart({ functionUrl }) {
                                 style={{ height: `${(planeado / maxValue) * 100}%` }}
                             />
                         </div>
-                    </div>
+                    </a>
                     <h2 className="font-bold text-center">{name}</h2>
                 </div>
             ))}

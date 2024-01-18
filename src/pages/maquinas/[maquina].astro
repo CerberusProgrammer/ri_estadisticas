@@ -1,0 +1,50 @@
+---
+import PiezaEnMaquina from "../../layouts/PiezasEnMaquina.astro";
+import Nav from "../../components/Nav.astro";
+
+const { maquina } = Astro.params;
+
+const funciones = {
+    "CNC 1": "/api/produccion/piezas/obtener_piezas_maquina_cnc1/",
+    "CNC 2": "/api/produccion/piezas/obtener_piezas_maquina_cnc2/",
+    "Fresadora 1": "/api/produccion/piezas/obtener_piezas_maquina_fresadora1/",
+    "Fresadora 2": "/api/produccion/piezas/obtener_piezas_maquina_fresadora2/",
+    Torno: "/api/produccion/piezas/obtener_piezas_maquina_torno/",
+    Machueleado: "/api/produccion/piezas/obtener_piezas_maquina_machueleado/",
+    Limpieza: "/api/produccion/piezas/obtener_piezas_maquina_limpieza/",
+    Corte: "/api/produccion/piezas/obtener_piezas_maquina_corte/",
+    Pintura: "/api/produccion/piezas/obtener_piezas_maquina_pintura/",
+    Pulido: "/api/produccion/piezas/obtener_piezas_maquina_pulido/",
+    "Cortadora Laser":
+        "/api/produccion/piezas/obtener_piezas_maquina_cortadoralaser/",
+    Dobladora: "/api/produccion/piezas/obtener_piezas_maquina_dobladora/",
+    Machueleadosm:
+        "/api/produccion/piezas/obtener_piezas_maquina_machueleadosm/",
+    Limpiezasm: "/api/produccion/piezas/obtener_piezas_maquina_limpiezasm/",
+};
+
+let funcion = "";
+
+if (maquina && funciones.hasOwnProperty(maquina)) {
+    funcion = funciones[maquina];
+} else {
+    console.error(
+        `La máquina "${maquina}" no se encontró en las funciones disponibles.`,
+    );
+}
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pieza {maquina}</title>
+    </head>
+    <body class="bg-slate-100">
+        <Nav />
+        <div class="pl-8 pr-8 pt-8 pb-8">
+            <PiezaEnMaquina functionUrl={funcion} />
+        </div>
+    </body>
+</html>

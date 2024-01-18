@@ -1,0 +1,45 @@
+---
+import { API_URL } from "../settings/config";
+
+interface Pieza {
+    id: number;
+    consecutivo: string;
+    estatus: string;
+}
+
+const { functionUrl } = Astro.props;
+
+const response = await fetch(`${API_URL}${functionUrl}`);
+
+if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+}
+
+const data = await response.json();
+
+const piezasRealizadas = data.realizadas;
+const piezasRetrasadas = data.retrasadas;
+
+const columnas = [
+    { titulo: "Realizadas", piezas: piezasRealizadas },
+    { titulo: "Retrasadas", piezas: piezasRetrasadas },
+];
+---
+
+<div class="mt-4">
+    {
+        columnas.map((columna) => (
+            <div class="column">
+                <h2>{columna.titulo}</h2>
+                {columna.piezas.map((pieza: Pieza) => (
+                    <a
+                        href={`/piezas/${pieza.id}`}
+                        class="card shadow-md p-4 ml-4 mr-4 mb-4 btn btn-ghost bg-white"
+                    >
+                        {pieza.consecutivo}
+                    </a>
+                ))}
+            </div>
+        ))
+    }
+</div>
