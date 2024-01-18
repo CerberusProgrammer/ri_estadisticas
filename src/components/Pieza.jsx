@@ -24,7 +24,7 @@ function Pieza({ id }) {
             </div>
             <div className="card bg-white w-full p-4 mb-4 shadow-md">
                 <p className="font-medium text-xl">{data.estatus || "Sin estatus"}</p>
-                <div className="md:block hidden">
+                <div className="lg:block hidden w-full">
                     <ul className="steps">
                         {steps.map(step => (
                             <li className={`step ${data.estados[step] === "realizado" ? "step-secondary" : ""}`}>
@@ -34,7 +34,7 @@ function Pieza({ id }) {
                     </ul>
                 </div>
 
-                <div className="md:hidden block">
+                <div className="lg:hidden block">
                     <ul className="steps steps-vertical">
                         {steps.map(step => (
                             <li className={`step ${data.estados[step] === "realizado" ? "step-secondary" : ""}`}>
