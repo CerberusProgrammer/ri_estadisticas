@@ -1,37 +1,50 @@
 ---
-import BarChartPlanMaquinas from "../components/BarChartPlanMaquinas";
 import BarChart from "../components/BarChart";
 ---
 
-<div class="card bg-white p-8 m-4 shadow-md">
-  <BarChart
-    functionUrl="/api/produccion/piezas/obtener_estadisticas_maquinado_hoy/"
-    client:load
-  />
+<div class="ml-4 mr-4">
+  <div class="carousel w-full">
+    <div id="slide1" class="carousel-item relative w-full">
+      <div class="card bg-white p-8 m-4 shadow-md w-full mx-auto">
+        <BarChart
+          functionUrl="/api/produccion/piezas/obtener_estadisticas_maquinado_hoy/"
+          client:load
+        />
+      </div>
+      <div
+        class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+      >
+        <a href="#slide3" class="btn btn-circle">❮</a>
+        <a href="#slide2" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide2" class="carousel-item relative w-full">
+      <div class="card bg-white p-8 m-4 shadow-md w-full mx-auto">
+        <BarChart
+          functionUrl="/api/produccion/piezas/obtener_estadisticas_soldadura_hoy/"
+          client:load
+        />
+      </div>
+      <div
+        class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+      >
+        <a href="#slide1" class="btn btn-circle">❮</a>
+        <a href="#slide3" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide3" class="carousel-item relative w-full">
+      <div class="card bg-white p-8 m-4 shadow-md w-full mx-auto">
+        <BarChart
+          functionUrl="/api/produccion/piezas/obtener_estadisticas_sheetmetal_hoy/"
+          client:load
+        />
+      </div>
+      <div
+        class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+      >
+        <a href="#slide2" class="btn btn-circle">❮</a>
+        <a href="#slide1" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <div class="w-full">
-    <BarChartPlanMaquinas
-      cardTitle="Maquinado"
-      functionUrl="/api/produccion/piezas/obtener_estadisticas_maquinado_hoy/"
-      client:load
-    />
-  </div>
-
-  <div class="w-full">
-    <BarChartPlanMaquinas
-      cardTitle="Soldadura"
-      functionUrl="/api/produccion/piezas/obtener_estadisticas_soldadura_hoy/"
-      client:load
-    />
-  </div>
-
-  <div class="w-full">
-    <BarChartPlanMaquinas
-      cardTitle="Sheet Metal"
-      functionUrl="/api/produccion/piezas/obtener_estadisticas_sheetmetal_hoy/"
-      client:load
-    />
-  </div>
-</div> -->
