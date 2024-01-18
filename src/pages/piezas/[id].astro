@@ -12,9 +12,9 @@ const { id } = Astro.params;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pieza {id}</title>
     </head>
-    <body>
+    <body class="bg-slate-100">
         <Nav />
-        <div class="pl-8 pr-8 pt-2">
+        <div class="pl-8 pr-8 pt-8 pb-8">
             <Pieza id={id} client:load />
         </div>
     </body>

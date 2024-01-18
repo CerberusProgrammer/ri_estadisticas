@@ -1,0 +1,19 @@
+---
+import Nav from "../components/Nav.astro";
+import Piezas from "../layouts/Piezas.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Piezas Retrasadas</title>
+    </head>
+    <body class="bg-slate-100">
+        <Nav />
+        <Piezas
+            functionUrl="/api/produccion/piezas/piezas_actuales_retrasadas/"
+        />
+    </body>
+</html>

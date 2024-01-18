@@ -6,7 +6,10 @@ interface Pieza {
     consecutivo: string;
 }
 
-const response = await fetch(`${API_URL}/api/produccion/piezas/`);
+// Recibimos la función como una prop
+const { functionUrl } = Astro.props;
+
+const response = await fetch(`${API_URL}${functionUrl}`);
 
 if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
