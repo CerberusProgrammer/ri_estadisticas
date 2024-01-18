@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../settings/config.js';
 
-function CircularProgressComponent({ functionUrl, title }) {
+function CircularProgressComponent({ functionUrl, title, functionAPI: goTo }) {
     const [datos, setDatos] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -68,22 +68,24 @@ function CircularProgressComponent({ functionUrl, title }) {
 
 
     return (
-        <div className="btn btn-ghost card bg-white shadow-md w-full h-56 flex justify-center items-center">
-            {errorMessage ? (
-                <p>{errorMessage}</p>
-            ) : datos ? (
-                <div className="flex flex-col items-center">
-                    <h2 className="text-xl text-gray-500 font-bold">{title}</h2>
-                    <div className="w-full p-4 flex justify-center">
-                        <CircularProgress
-                            value={datos.progreso}
-                        />
+        <a href={`${goTo}`} className="btn btn-ghost card bg-white shadow-md w-full h-56 flex justify-center items-center" >
+            {
+                errorMessage ? (
+                    <p> {errorMessage}</p >
+                ) : datos ? (
+                    <div className="flex flex-col items-center">
+                        <h2 className="text-xl text-gray-500 font-bold">{title}</h2>
+                        <div className="w-full p-4 flex justify-center">
+                            <CircularProgress
+                                value={datos.progreso}
+                            />
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <span class="loading loading-spinner text-secondary"></span>
-            )}
-        </div>
+                ) : (
+                    <span class="loading loading-spinner text-secondary"></span>
+                )
+            }
+        </a >
     );
 
 }

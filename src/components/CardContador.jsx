@@ -4,11 +4,9 @@ import { API_URL } from '../settings/config.js';
 function CardContador({ functionUrl, title, pageUrl }) {
 	const [piezasCount, setPiezasCount] = useState(0);
 	const [errorMessage, setErrorMessage] = useState('');
-	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setIsLoading(true);
 			try {
 				const response = await fetch(
 					`${API_URL}/api/produccion/piezas/${functionUrl}/`,
@@ -19,7 +17,6 @@ function CardContador({ functionUrl, title, pageUrl }) {
 			} catch (error) {
 				setErrorMessage(error.message);
 			}
-			setIsLoading(false);
 		};
 
 		fetchData();
@@ -34,9 +31,7 @@ function CardContador({ functionUrl, title, pageUrl }) {
 
 	return (
 		<button onClick={handleClick} className="btn btn-ghost card bg-white shadow-md w-full h-14 p-12">
-			{isLoading ? (
-				<span className="loading loading-spinner text-secondary p-4"></span>
-			) : errorMessage ? (
+			{errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (
 				<p

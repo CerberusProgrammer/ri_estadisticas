@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../settings/config.js';
 
-
-
 function BarChart({ functionUrl }) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -25,28 +23,26 @@ function BarChart({ functionUrl }) {
     const maxValue = Math.max(...Object.values(data).map(obj => Math.max(obj.realizadas, obj.planeado)));
 
     return (
-        <div className="card shadow-md bg-white p-12 m-4">
-            <div className="flex space-x-4">
-                {Object.entries(data).map(([name, { realizadas, planeado }]) => (
-                    <div key={name} className="space-y-2">
-                        <div className="flex space-x-2 btn btn-ghost h-full">
-                            <div className="relative w-6 h-64 bg-orange-200">
-                                <div
-                                    className="absolute bottom-0 left-0 right-0 bg-orange-500"
-                                    style={{ height: `${(realizadas / maxValue) * 100}%` }}
-                                />
-                            </div>
-                            <div className="relative w-6 h-64 bg-orange-200">
-                                <div
-                                    className="absolute bottom-0 left-0 right-0 bg-orange-500"
-                                    style={{ height: `${(planeado / maxValue) * 100}%` }}
-                                />
-                            </div>
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 w-full h-full">
+            {Object.entries(data).map(([name, { realizadas, planeado }]) => (
+                <div key={name} className="space-y-2">
+                    <div className="flex space-x-2 p-4 btn btn-ghost h-full tooltip" data-tip={`Realizadas: ${realizadas}, Planeado: ${planeado}`}>
+                        <div className="relative w-9 h-96 bg-orange-200 rounded">
+                            <div
+                                className="absolute bottom-0 left-0 right-0 bg-orange-500 rounded"
+                                style={{ height: `${(realizadas / maxValue) * 100}%` }}
+                            />
                         </div>
-                        <h2 className="font-bold text-center">{name}</h2>
+                        <div className="relative w-9 h-96 bg-orange-200 rounded">
+                            <div
+                                className="absolute bottom-0 left-0 right-0 bg-orange-500 rounded"
+                                style={{ height: `${(planeado / maxValue) * 100}%` }}
+                            />
+                        </div>
                     </div>
-                ))}
-            </div>
+                    <h2 className="font-bold text-center">{name}</h2>
+                </div>
+            ))}
         </div>
     );
 }
