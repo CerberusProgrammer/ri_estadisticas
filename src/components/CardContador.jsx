@@ -39,12 +39,10 @@ function CardContador({ functionUrl, title, pageUrl }) {
 			) : errorMessage ? (
 				<p>{errorMessage}</p>
 			) : (
-				<p
-					className="w-full h-full flex flex-col justify-center items-center"
-				>
+				<div className="w-full h-full flex flex-col justify-center items-center">
 					<p className="text-4xl text-secondary font-semibold">{piezasCount}</p>
 					<p className="font-bold text-gray-500 pt-2">{title}</p>
-				</p>
+				</div>
 			)}
 		</button>
 	);
